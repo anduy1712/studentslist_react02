@@ -1,8 +1,22 @@
 import './App.css';
-import React, {Fragment} from 'react';
+import React,{Fragment,useState} from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import TaskForm from './components/TaskForm';
 
 const App = () => {
+  const [work,setWork] = useState([
+    {
+        id:uuidv4(),
+        name:'Duy An',
+        status: true,
+    },
+    {
+        id:uuidv4(),
+        name:'Justin',
+        status:false,
+    }
+]);
+
   return (
     <Fragment>
         <div className="container mt-4">
@@ -34,52 +48,8 @@ const App = () => {
                   <button type="button" className="btn btn-primary mb-2">Add Work</button>
                    <h4 className="card-title">List Works</h4>
                    {/* Table */}
-                   <TaskForm/>
-                   {/* <table className="table">
-                     <thead>
-                       <tr>
-                         <th>ID</th>
-                         <th>Name</th>
-                         <th>Status</th>
-                       </tr>
-                     </thead>
-                     <tbody>
-                     <tr>
-                         <td scope="row">#</td>
-                         <td>
-                             <input type="text" name="" id="" className="form-control" placeholder="" aria-describedby="helpId"/>
-                           
-                         </td>
-                         <td>
-                           <div class="dropdown">
-                             <button class="btn btn-secondary dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true"
-                                 aria-expanded="false">
-                                   Status
-                                 </button>
-                             <div class="dropdown-menu" aria-labelledby="triggerId">
-                               <a class="dropdown-item" href="#">Online</a>
-                               <a class="dropdown-item" href="#">Offline</a>
-                               
-                             </div>
-                           </div>
-                         </td>
-                       </tr>
-                       <tr>
-                         <td scope="row">1</td>
-                         <td>Justin young</td>
-                         <td>
-                           <span class="badge badge-primary">Online</span>
-                         </td>
-                       </tr>
-                       <tr>
-                         <td scope="row">2</td>
-                         <td>Lena Jawlu</td>
-                         <td>
-                          <span class="badge badge-danger">Offline</span>
-                         </td>
-                       </tr>
-                     </tbody>
-                   </table> */}
+                   <TaskForm tasks={work}/>
+                   
                  </div>
                </div>
             </div>

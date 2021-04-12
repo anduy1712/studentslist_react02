@@ -1,25 +1,13 @@
 import React, {Fragment,useState} from 'react';
-import TaskItem from './TaskItem';
+import TaskList from './TaskList';
 
-const TaskForm = () => {
+const TaskForm = props => {
     
+
     
 
     return (
-        <Fragment>
-            <table className="table">
-                     <thead>
-                       <tr>
-                         <th>ID</th>
-                         <th>Name</th>
-                         <th>Status</th>
-                       </tr>
-                     </thead>
-                     <tbody>
-                        <TaskItem/>
-                     </tbody>
-                   </table>
-        </Fragment>
+      <TaskList tasks={props.tasks}/>
     )
 }
 

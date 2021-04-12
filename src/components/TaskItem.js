@@ -1,20 +1,8 @@
 import React,{Fragment,useState} from 'react';
-import { v4 as uuidv4 } from 'uuid';
-const TaskItem = () =>{
-    const [work,setWork] = useState([
-        {
-            id:uuidv4(),
-            name:'Duy An',
-            status: true,
-        },
-        {
-            id:uuidv4(),
-            name:'Justin',
-            status:false,
-        }
-    ]);
-    let students = work.map((student,index) =>{
-        return <tr>
+const TaskItem = props =>{
+    const {tasks} = props
+    let students = tasks.map((student,index) =>{
+        return <tr key={index}>
                     <td scope="row">{index+1}</td>
                     <td>{student.name}</td>
                     <td>
@@ -24,27 +12,7 @@ const TaskItem = () =>{
     })
     return (
         <Fragment>
-            <tr>
-                         <td scope="row">#</td>
-                         <td>
-                             <input type="text" name="" id="" className="form-control" placeholder="" aria-describedby="helpId"/>
-                           
-                         </td>
-                         <td>
-                           <div className="dropdown">
-                             <button className="btn btn-secondary dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true"
-                                 aria-expanded="false">
-                                   Status
-                                 </button>
-                             <div className="dropdown-menu" aria-labelledby="triggerId">
-                               <a className="dropdown-item" href="#">Online</a>
-                               <a className="dropdown-item" href="#">Offline</a>
-                               
-                             </div>
-                           </div>
-                         </td>
-                       </tr>
-                       {students}
+            {students}
         </Fragment>
     )
 }
